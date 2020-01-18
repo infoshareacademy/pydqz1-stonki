@@ -2,6 +2,7 @@ import json
 import random
 import string
 
+
 file_name = "dane.json"
 
 
@@ -66,6 +67,17 @@ def generate_name(sex):
         return random_value_for_key("first_names_male")
 
 
+def generate_domain():
+    with open(file_name) as f:
+        data = json.load(f)
+        value = data["domains"]
+        return random.choice(list(value))
+
+def generate_random_emails():
+    for i in range(1):
+        return generate_unisex_last_name() + "@" + generate_domain()
+
+
 def random_value_for_key(key_name):
     with open(file_name) as f:
         data = json.load(f)
@@ -75,6 +87,9 @@ def random_value_for_key(key_name):
 
 def write_Json_to_file(json):
     pass
+    # with open("generate_data.json", "w") as new_data:
+    #     json.dump(....., new_data)
+    # print("Zapisano dane.")
 
 
 
