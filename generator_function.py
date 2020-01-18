@@ -1,5 +1,6 @@
 import json
 import random
+import string
 
 file_name = "dane.json"
 
@@ -13,7 +14,10 @@ def generate_female_name():
 
 
 def generate_unisex_last_name():
-    pass
+    with open(file_name) as f:
+        data = json.load(f)
+        value = data["unisex_last_names"]
+        return random.choice(list(value))
 
 
 def generate_male_last_name():
@@ -21,19 +25,38 @@ def generate_male_last_name():
 
 
 def generate_address():
-    return generate_street() + generate_city()
+    return generate_street() + " "+ generate_city()
 
 
 def generate_street():
-    pass
+    with open(file_name) as f:
+        data = json.load(f)
+        value = data["streets"]
+        return random.choice(list(value))
 
 
 def generate_city():
-    pass
+    with open(file_name) as f:
+        data = json.load(f)
+        value = data["cities"]
+        return random.choice(list(value))
 
 
 def generate_female_person():
     return json.dumps({"first_name": generate_female_name(), "last_name": generate_unisex_last_name(), "address": generate_address()})
+
+
+def generate_nick():
+    return letters_generator() + numbers_generator()
+
+def letters_generator(chars=string.ascii_uppercase):
+    return ''.join(random.choice(chars) for y in range(6))
+
+
+def numbers_generator(chars=string.digits):
+    return ''.join(random.choice(chars) for x in range (2))
+
+
 
 
 def generate_name(sex):
