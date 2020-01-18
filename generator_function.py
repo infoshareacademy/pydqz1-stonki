@@ -22,7 +22,10 @@ def generate_unisex_last_name():
 
 
 def generate_male_last_name():
-    pass
+    with open(file_name) as f:
+        data = json.load(f)
+        value = data["male_last_names"]
+        return random.choice(list(value))
 
 
 def generate_address():
@@ -50,14 +53,13 @@ def generate_female_person():
 def generate_nick():
     return letters_generator() + numbers_generator()
 
+
 def letters_generator(chars=string.ascii_uppercase):
     return ''.join(random.choice(chars) for y in range(6))
 
 
 def numbers_generator(chars=string.digits):
-    return ''.join(random.choice(chars) for x in range (2))
-
-
+    return ''.join(random.choice(chars) for x in range(2))
 
 
 def generate_name(sex):
@@ -72,6 +74,7 @@ def generate_domain():
         data = json.load(f)
         value = data["domains"]
         return random.choice(list(value))
+
 
 def generate_random_emails():
     for i in range(1):
