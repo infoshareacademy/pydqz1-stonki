@@ -47,7 +47,7 @@ def generate_city():
 
 
 def generate_female_person():
-    return json.dumps({"first_name": generate_female_name(), "last_name": generate_unisex_last_name(), "address": generate_address()})
+    return json.dumps({"first_name": generate_female_name(), "last_name": generate_unisex_last_name()})
 
 
 def generate_nick():
@@ -88,11 +88,10 @@ def random_value_for_key(key_name):
         return random.choice(list(value))
 
 
-def write_Json_to_file(json):
-    pass
-    # with open("generate_data.json", "w") as new_data:
-    #     json.dump(....., new_data)
-    # print("Zapisano dane.")
+def write_Json_to_file():
+    with open("generate_data.json", "w") as new_data:
+        generate_female_person()
+
 
 
 
